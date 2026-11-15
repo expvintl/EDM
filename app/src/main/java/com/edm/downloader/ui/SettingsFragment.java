@@ -3,7 +3,6 @@ package com.edm.downloader.ui;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,7 +33,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.Slider;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 /** Preferences screen, styled as Material Design 2 setting rows. */
@@ -115,10 +113,6 @@ public class SettingsFragment extends Fragment {
         themeValue = view.findViewById(R.id.themeValue);
         languageValue = view.findViewById(R.id.languageValue);
         versionValue = view.findViewById(R.id.versionValue);
-        view.findViewById(R.id.rowVersion).setOnLongClickListener(v -> {
-            showDownloaderDiagnostics();
-            return true;
-        });
         batteryValue = view.findViewById(R.id.batteryValue);
 
         view.findViewById(R.id.rowThreads).setOnClickListener(v -> pickThreads());
@@ -219,66 +213,6 @@ public class SettingsFragment extends Fragment {
         versionValue.setText(getString(R.string.settings_version_summary, versionName()));
         batteryValue.setText(ignoringBattery() ? R.string.settings_battery_on
                 : R.string.settings_battery_off);
-    }
-
-    /**
-     * Resolves the intents Firefox uses to build its downloader chooser, so we can see whether
-     * EDM shows up as an untyped handler (and therefore gets treated as a browser) or as a typed
-     * one. Long-press the version row to open it.
-     */
-    private void showDownloaderDiagnostics() {
-        PackageManager pm = requireContext().getPackageManager();
-        Intent browserProbe;
-        try {
-            browserProbe = Intent.parseUri("http://www.mozilla.org/index.html",
-                    Intent.URI_INTENT_SCHEME);
-        } catch (Exception e) {
-            browserProbe = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://www.mozilla.org/index.html"));
-        }
-        List<ResolveInfo> browserSet = pm.queryIntentActivities(browserProbe,
-                PackageManager.MATCH_ALL);
-
-        Intent typed = new Intent(Intent.ACTION_VIEW)
-                .setDataAndTypeAndNormalize(Uri.parse("https://example.com/video.mp4"),
-                        "video/mp4");
-        typed.addCategory(Intent.CATEGORY_BROWSABLE);
-        List<ResolveInfo> typedApps = pm.queryIntentActivities(typed, PackageManager.MATCH_ALL);
-
-        Intent fileUrl = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://example.com/video.mp4"));
-        fileUrl.addCategory(Intent.CATEGORY_BROWSABLE);
-        List<ResolveInfo> fileApps = pm.queryIntentActivities(fileUrl, PackageManager.MATCH_ALL);
-
-        int versionCode = 0;
-        try {
-            versionCode = pm.getPackageInfo(requireContext().getPackageName(), 0).versionCode;
-        } catch (PackageManager.NameNotFoundException ignored) {
-            // Keep zero when the package manager cannot answer.
-        }
-        new MaterialAlertDialogBuilder(requireContext())
-                .setTitle(R.string.settings_diag_title)
-                .setMessage(getString(R.string.settings_diag_body, browserSet.size(),
-                        selfActivities(browserSet), typedApps.size(), selfActivities(typedApps),
-                        fileApps.size(), selfActivities(fileApps), versionCode))
-                .setPositiveButton(R.string.action_ok, null)
-                .show();
-    }
-
-    private String selfActivities(List<ResolveInfo> list) {
-        String pkg = requireContext().getPackageName();
-        StringBuilder names = new StringBuilder();
-        for (ResolveInfo info : list) {
-            if (!pkg.equals(info.activityInfo.packageName)) {
-                continue;
-            }
-            String name = info.activityInfo.name;
-            if (names.length() > 0) {
-                names.append(", ");
-            }
-            names.append(name.substring(name.lastIndexOf('.') + 1));
-        }
-        return names.length() == 0 ? getString(R.string.settings_diag_none) : names.toString();
     }
 
     private boolean ignoringBattery() {

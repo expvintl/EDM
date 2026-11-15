@@ -200,25 +200,21 @@ public class MainActivity extends AppCompatActivity {
                 .show(getSupportFragmentManager(), TAG_SHEET);
     }
 
+    /**
+     * Handles the only intent EDM accepts from other apps: a browser handing over a download
+     * as a typed http(s) link. Shares and local file opens are not registered in the manifest,
+     * so nothing else reaches this method.
+     */
     private void handleIntent(Intent intent) {
-        if (intent == null) {
+        if (intent == null || !Intent.ACTION_VIEW.equals(intent.getAction())
+                || intent.getData() == null) {
             return;
         }
-        String action = intent.getAction();
-        String url = null;
-        if (Intent.ACTION_SEND.equals(action)) {
-            CharSequence text = intent.getCharSequenceExtra(Intent.EXTRA_TEXT);
-            url = extractUrl(text == null ? null : text.toString());
-        } else if (Intent.ACTION_VIEW.equals(action) && intent.getData() != null) {
-            String data = intent.getData().toString();
-            if (FileUtils.isHttp(data)) {
-                url = data;
-            }
+        final String url = intent.getData().toString();
+        if (!FileUtils.isHttp(url)) {
+            return;
         }
-        if (url != null) {
-            final String target = url;
-            fab.post(() -> showAddSheet(target));
-        }
+        fab.post(() -> showAddSheet(url));
     }
 
     @Nullable

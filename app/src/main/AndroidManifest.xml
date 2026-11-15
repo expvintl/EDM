@@ -34,17 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- Share a link from any browser to EDM. -->
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-
-            <!-- Download hand-off from browsers: any file type over http(s).
-                 Keep these filters MIME-typed: Firefox classifies any activity that
-                 resolves an untyped http(s) VIEW intent as a browser and removes it
-                 from its downloader chooser (see LinkActivity). -->
+            <!-- Download hand-off from browsers that know the file's MIME type. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -54,11 +44,10 @@
                 <data android:mimeType="*/*" />
             </intent-filter>
 
-            <!-- The */* filter above covers every MIME type, so no per-type list is needed. -->
-            <!-- Untyped links that point at a file. Matching on the extension (instead of
-                 handling every http link) keeps this activity out of Firefox's browser set;
-                 path patterns only work when the filter also declares a host, and they use
-                 simple-glob syntax (no [aA] classes), so each extension is listed twice. -->
+            <!-- The */* filter above covers intents that carry a MIME type; most browsers
+                 instead hand a download over as a bare URL, which only matches by path.
+                 pathPattern needs a declared host and uses simple-glob syntax (no [aA]
+                 classes), so each extension is listed twice. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -167,52 +156,9 @@
                 <data android:pathPattern=".*\\.json" />
                 <data android:pathPattern=".*\\.JSON" />
             </intent-filter>
+
         </activity>
 
-        <!-- Untyped http(s) link handler. Must stay on its own activity: see LinkActivity. -->
-        <activity
-            android:name=".LinkActivity"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:noHistory="true"
-            android:theme="@android:style/Theme.NoDisplay">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-            </intent-filter>
-        </activity>
-
-        <!-- Media hand-offs from browsers arrive as blob:/data: URIs; explain them politely. -->
-        <activity
-            android:name=".HandoffActivity"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:noHistory="true"
-            android:theme="@style/Theme.EDM">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="content" />
-                <data android:scheme="blob" />
-                <data android:scheme="data" />
-                <data android:scheme="file" />
-                <data android:mimeType="*/*" />
-            </intent-filter>
-
-            <!-- Media viewer "save to device": browsers pass just a MIME type. -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:mimeType="image/*" />
-                <data android:mimeType="video/*" />
-                <data android:mimeType="audio/*" />
-            </intent-filter>
-        </activity>
 
         <activity
             android:name=".ui.DetailActivity"

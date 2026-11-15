@@ -5,7 +5,7 @@
 [简体中文](README.zh-CN.md) · [Download](#download) · [Features](#features) · [Build](#building-from-source)
 
 ![Android 8.0+](https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&logoColor=white)
-![Version 1.0.0](https://img.shields.io/badge/version-1.0.0-blue)
+![Version 1.0.1](https://img.shields.io/badge/version-1.0.1-blue)
 ![License MIT](https://img.shields.io/badge/license-MIT-green)
 
 EDM is a lightweight, ad-free Android download manager. It splits a file into up to 32
@@ -18,7 +18,7 @@ interface follows Material Design 2 and supports light, dark, and system themes.
 
 | | |
 |---|---|
-| **Version** | 1.0.0 |
+| **Version** | 1.0.1 |
 | **Requires** | Android 8.0 (API 26) or newer |
 | **Package** | `com.edm.downloader` |
 | **APK size** | ~4.3 MB |
@@ -30,9 +30,10 @@ interface follows Material Design 2 and supports light, dark, and system themes.
   the same time. Servers without `Range` support are downloaded as a single stream.
 - **Resume and retry** — continue interrupted transfers from the last checkpoint. Failed
   downloads can be retried automatically with a configurable delay and attempt count.
-- **Browser handoff** — share a link to EDM, or open it with EDM from a browser's
-  "Open with" menu. Typed and untyped HTTP(S) links, as well as `content://`, `blob:`,
-  `data:`, and `file://` handoffs, are supported.
+- **Browser handoff** — a browser can offer EDM as its downloader whether it passes the
+  file's MIME type or only the URL. EDM does not handle shares, local files,
+  attachments or ordinary page links, so it stays out of share sheets and out of
+  "open with" for files.
 - **Flexible storage** — save to the app folder by default, or pick any folder through the
   Storage Access Framework. The destination can be changed per unfinished task.
 - **Preallocation** — optionally create the destination at its final size and write
@@ -64,7 +65,7 @@ builds can be installed over older ones; Android may refuse a build with a lower
 ## Getting started
 
 1. Open EDM and tap the **+** button.
-2. Paste a direct link, or share one from a browser.
+2. Paste a direct link, or open the page in the built-in EDM browser.
 3. Wait for the link inspector to resolve the filename and size, then adjust the filename,
    thread count, or folder if needed.
 4. Tap **Download**. Progress is shown in the task list and in the notification.
@@ -75,17 +76,35 @@ preallocation, automatic retries, proxy, User-Agent, theme, and language.
 
 ## Browser integration
 
-EDM registers both typed and untyped HTTP(S) handlers:
+EDM offers itself as a browser's download handler. There are two kinds of hand-off:
 
-- The **typed** `*/*` filter and file-extension patterns let browsers that resolve a
-  download's MIME type or filename offer EDM as a downloader.
-- The **untyped** handler covers browsers that hand over a link without a MIME type, such
-  as Firefox's download chooser.
-- A separate handler accepts `content://`, `blob:`, `data:`, and `file://` URIs from apps
-  that forward an already-opened download.
+| Hand-off | Intent | Matched by |
+|---|---|---|
+| The browser knows the file type | `VIEW` for `http(s)` with a MIME type | the `*/*` filter, for any filename |
+| The browser only passes the URL | `VIEW` for `http(s)` without a type | the `pathPattern` extension list |
 
-If a browser does not list EDM, use its **Share** or **Open with** action instead. Some
-browsers only expose their own downloader and cannot hand links to third-party apps.
+Whenever the browser supplies a type — including `application/octet-stream` for a file it
+cannot identify — the filename and extension do not matter. The extension list only covers
+the second case, where the intent carries nothing but a URL; it is the reason a link that
+ends in `.mp4`, `.pdf`, `.apk`, `.zip`, `.iso` and similar files is claimed while an
+ordinary page is not.
+
+Two limits follow from the platform, not from the app:
+
+- a URL with neither a MIME type nor a known extension (`/download?id=123`) is not claimed;
+- the list is fixed at build time, so a rare or custom extension is only claimed when the
+  browser reports a type for it.
+
+EDM deliberately does **not** register:
+
+- `SEND text/plain`, so it never appears in a share sheet;
+- `content://`, `blob:`, `data:`, `file://` or media MIME filters, so opening a local
+  file, an attachment (for example a calendar invite), or a photo never lists EDM;
+- a catch-all handler for plain links, so opening a link from another app never lists EDM
+  unless the URL points at a downloadable file.
+
+If a browser only allows its own downloader, use the built-in EDM browser or paste the
+link into EDM.
 
 ## Building from source
 

@@ -158,11 +158,6 @@
     <string name="detail_resume_no">Not supported — starts over</string>
     <string name="proxy_using">Proxy: %1$s</string>
     <string name="proxy_not_configured">No proxy set — configure it in Settings</string>
-    <string name="settings_diag_title">Download hand-off diagnostics</string>
-    <string name="settings_diag_body">Untyped http(s) handlers: %1$d\nEDM in that set: %2$s\nvideo/mp4 matches: %3$d\nEDM typed matches: %4$s\nfile URL matches: %5$d\nEDM file-URL matches: %6$s\nversionCode: %7$d</string>
-    <string name="settings_diag_none">none</string>
-    <string name="handoff_title">Cannot download this link</string>
-    <string name="handoff_message">The browser handed over a %1$s link (type %2$s) instead of an http(s) address. Temporary blob:/data: links only exist inside the browser, so no downloader can read them.\n\nURL: %3$s\n\nOpen the media in a new tab or copy its address, then add that link to EDM.</string>
     <string name="fmt_seconds">%1$d s</string>
     <string name="retry_waiting">retry in %1$ds (%2$d/%3$d)</string>
 
