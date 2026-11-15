@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.EDM" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/edm_primary</item>
+        <item name="colorPrimaryVariant">@color/edm_primary_dark</item>
+        <item name="colorOnPrimary">@color/edm_on_primary</item>
+        <item name="colorSecondary">@color/edm_secondary</item>
+        <item name="colorSecondaryVariant">@color/edm_secondary_dark</item>
+        <item name="colorOnSecondary">@color/edm_on_secondary</item>
+        <item name="android:colorBackground">@color/edm_background</item>
+        <item name="colorSurface">@color/edm_surface</item>
+        <item name="colorOnSurface">@color/edm_text_primary</item>
+        <item name="colorError">@color/edm_error</item>
+        <item name="android:statusBarColor">@color/edm_primary_dark</item>
+        <item name="android:navigationBarColor">@color/edm_surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+        <item name="android:windowBackground">@color/edm_background</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.EDM.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.EDM.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.EDM.Large</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.EDM.AlertDialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.EDM.BottomSheet</item>
+        <item name="floatingActionButtonStyle">@style/Widget.EDM.Fab</item>
+    </style>
+
+    <style name="ShapeAppearance.EDM.Small" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="ShapeAppearance.EDM.Medium" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearance.EDM.Large" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="ThemeOverlay.EDM.Toolbar" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/edm_white</item>
+        <item name="android:textColorSecondary">@color/edm_white</item>
+        <item name="colorControlNormal">@color/edm_white</item>
+        <item name="colorControlHighlight">#33FFFFFF</item>
+        <item name="actionMenuTextColor">@color/edm_white</item>
+    </style>
+
+    <style name="ThemeOverlay.EDM.Popup" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorPrimary">@color/edm_text_primary</item>
+        <item name="android:textColorSecondary">@color/edm_text_secondary</item>
+        <item name="colorControlNormal">@color/edm_text_primary</item>
+        <item name="android:colorBackground">@color/edm_surface</item>
+        <item name="colorSurface">@color/edm_surface</item>
+    </style>
+
+    <style name="ThemeOverlay.EDM.AlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorPrimary">@color/edm_primary</item>
+    </style>
+
+    <style name="ThemeOverlay.EDM.BottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog" />
+
+    <style name="Widget.EDM.Fab" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/edm_secondary</item>
+        <item name="tint">@color/edm_on_secondary</item>
+        <item name="elevation">6dp</item>
+    </style>
+
+    <style name="Widget.EDM.BottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/edm_surface</item>
+        <item name="itemIconTint">@color/bottom_nav_item</item>
+        <item name="itemTextColor">@color/bottom_nav_item</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="elevation">8dp</item>
+    </style>
+
+    <style name="TextAppearance.EDM.Section" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:textColor">@color/edm_text_secondary</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
+
+    <style name="Widget.EDM.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">1dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="Widget.EDM.Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:minHeight">44dp</item>
+    </style>
+
+    <style name="Widget.EDM.Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="Widget.EDM.SettingRow" parent="">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">13dp</item>
+        <item name="android:paddingBottom">13dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="Widget.EDM.SettingRowSwitch" parent="Widget.EDM.SettingRow">
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="TextAppearance.EDM.SettingTitle" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/edm_text_primary</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="TextAppearance.EDM.SettingSummary" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/edm_text_secondary</item>
+        <item name="android:textSize">12.5sp</item>
+    </style>
+
+    <style name="TextAppearance.EDM.SettingValue" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/edm_primary</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Widget.EDM.SectionHeader" parent="">
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.EDM.Section</item>
+    </style>
+</resources>

@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Release signing is optional: the keystore and its passwords are never committed.
+// Local builds can provide them in keystore/signing.properties (see README) or through
+// the EDM_STORE_PASSWORD / EDM_KEY_PASSWORD / EDM_KEY_ALIAS environment variables.
+def releaseKeystore = rootProject.file("keystore/edm-release.jks")
+def signingProperties = new Properties()
+def signingPropertiesFile = rootProject.file("keystore/signing.properties")
+if (signingPropertiesFile.exists()) {
+    signingPropertiesFile.withInputStream { signingProperties.load(it) }
+}
+def releaseStorePassword = System.getenv("EDM_STORE_PASSWORD")
+        ?: signingProperties.getProperty("storePassword")
+def releaseKeyPassword = System.getenv("EDM_KEY_PASSWORD")
+        ?: signingProperties.getProperty("keyPassword")
+def releaseKeyAlias = System.getenv("EDM_KEY_ALIAS")
+        ?: signingProperties.getProperty("keyAlias", "edm")
+def canSignRelease = releaseKeystore.exists()
+        && releaseStorePassword != null && releaseKeyPassword != null
+
+android {
+    namespace 'com.edm.downloader'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+
+    defaultConfig {
+        applicationId "com.edm.downloader"
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName "1.0.0"
+        vectorDrawables.useSupportLibrary true
+        resConfigs "en", "zh-rCN"
+    }
+
+    signingConfigs {
+        if (canSignRelease) {
+            release {
+                storeFile releaseKeystore
+                storePassword releaseStorePassword
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            if (canSignRelease) {
+                signingConfig signingConfigs.release
+            }
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core:1.13.1'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+    implementation 'com.google.android.material:material:1.12.0'
+}

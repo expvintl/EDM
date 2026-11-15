@@ -1,0 +1,18 @@
+# EDM build / IDE artifacts
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Packaged APKs
+dist/
+*.apk
+
+# Signing material — never commit
+keystore/
+*.jks
+*.keystore

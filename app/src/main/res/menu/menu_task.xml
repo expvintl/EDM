@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/task_toggle"
+        android:title="@string/action_pause" />
+    <item
+        android:id="@+id/task_open"
+        android:title="@string/action_open" />
+    <item
+        android:id="@+id/task_share"
+        android:title="@string/action_share" />
+    <item
+        android:id="@+id/task_copy"
+        android:title="@string/action_copy_link" />
+    <item
+        android:id="@+id/task_redownload"
+        android:title="@string/action_redownload" />
+    <item
+        android:id="@+id/task_change_folder"
+        android:title="@string/action_change_folder" />
+    <item
+        android:id="@+id/task_details"
+        android:title="@string/action_details" />
+    <item
+        android:id="@+id/task_delete"
+        android:title="@string/action_delete" />
+</menu>

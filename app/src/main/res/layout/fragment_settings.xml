@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/edm_background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="24dp">
+
+        <TextView
+            style="@style/Widget.EDM.SectionHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_download" />
+
+        <LinearLayout
+            android:id="@+id/rowThreads"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_threads"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_threads_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/threadsValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowConcurrent"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_concurrent"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_concurrent_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/concurrentValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Widget.EDM.SettingRowSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_wifi_only"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_wifi_only_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchWifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Widget.EDM.SettingRowSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_auto_resume"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_auto_resume_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchAutoResume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Widget.EDM.SettingRowSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_preallocate"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_preallocate_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchPreallocate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowRetryInterval"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_retry_interval"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_retry_interval_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/retryIntervalValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowRetryCount"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_retry_count"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_retry_count_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/retryCountValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Widget.EDM.SettingRowSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_notifications"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_notifications_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchNotifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowBattery"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_battery"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:id="@+id/batteryValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="12dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="@color/edm_text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Widget.EDM.SettingRowSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_clipboard"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_clipboard_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchClipboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/Widget.EDM.SectionHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_network" />
+
+        <LinearLayout
+            style="@style/Widget.EDM.SettingRowSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_proxy_default"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_proxy_default_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchProxyDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowProxyType"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_proxy_type"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_proxy_type_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/proxyTypeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowProxyHost"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/settings_proxy_host"
+                android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+            <TextView
+                android:id="@+id/proxyHostValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:maxWidth="220dp"
+                android:maxLines="1"
+                android:ellipsize="middle"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowProxyPort"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/settings_proxy_port"
+                android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+            <TextView
+                android:id="@+id/proxyPortValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowUa"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/settings_ua"
+                android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+            <TextView
+                android:id="@+id/uaValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowUaCustom"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/dialog_ua_custom_title"
+                android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+            <TextView
+                android:id="@+id/uaCustomValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:ellipsize="middle"
+                android:maxWidth="220dp"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/Widget.EDM.SectionHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_storage" />
+
+        <LinearLayout
+            android:id="@+id/rowFolder"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_folder"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:id="@+id/folderValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="middle"
+                    android:maxLines="2"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="12dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="@color/edm_text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowResetFolder"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/settings_folder_reset"
+                android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/Widget.EDM.SectionHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_appearance" />
+
+        <LinearLayout
+            android:id="@+id/rowTheme"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/settings_theme"
+                android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+            <TextView
+                android:id="@+id/themeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowLanguage"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_language"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_language_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/languageValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/Widget.EDM.SectionHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_about" />
+
+        <LinearLayout
+            android:id="@+id/rowVersion"
+            style="@style/Widget.EDM.SettingRowSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_version"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/versionValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/TextAppearance.EDM.SettingValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowClearCompleted"
+            style="@style/Widget.EDM.SettingRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_clear_completed"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_clear_completed_summary"
+                    android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/settings_files_note"
+            android:textAppearance="@style/TextAppearance.EDM.SettingSummary" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

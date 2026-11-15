@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="edm_primary">#1565C0</color>
+    <color name="edm_primary_dark">#0D47A1</color>
+    <color name="edm_toolbar">#1565C0</color>
+    <color name="edm_on_primary">#FFFFFF</color>
+    <color name="edm_primary_container">#E3F0FF</color>
+    <color name="edm_secondary">#FB8C00</color>
+    <color name="edm_secondary_dark">#EF6C00</color>
+    <color name="edm_on_secondary">#FFFFFF</color>
+    <color name="edm_background">#F3F6FA</color>
+    <color name="edm_surface">#FFFFFF</color>
+    <color name="edm_surface_alt">#EDF2F8</color>
+    <color name="edm_text_primary">#182230</color>
+    <color name="edm_text_secondary">#5C6B7D</color>
+    <color name="edm_divider">#E1E7EF</color>
+    <color name="edm_track">#DCE5EF</color>
+    <color name="edm_success">#2E7D32</color>
+    <color name="edm_warning">#EF6C00</color>
+    <color name="edm_warning_container">#FFF1DE</color>
+    <color name="edm_error">#C62828</color>
+    <color name="edm_scrim">#66000000</color>
+    <color name="edm_white">#FFFFFF</color>
+    <color name="edm_black">#000000</color>
+
+    <color name="edm_icon_video">#E53935</color>
+    <color name="edm_icon_video_bg">#FFEBEE</color>
+    <color name="edm_icon_audio">#8E24AA</color>
+    <color name="edm_icon_audio_bg">#F3E5F5</color>
+    <color name="edm_icon_image">#00897B</color>
+    <color name="edm_icon_image_bg">#E0F2F1</color>
+    <color name="edm_icon_apk">#43A047</color>
+    <color name="edm_icon_apk_bg">#E8F5E9</color>
+    <color name="edm_icon_archive">#F9A825</color>
+    <color name="edm_icon_archive_bg">#FFF8E1</color>
+    <color name="edm_icon_doc">#1E88E5</color>
+    <color name="edm_icon_doc_bg">#E3F2FD</color>
+    <color name="edm_icon_other">#546E7A</color>
+    <color name="edm_icon_other_bg">#ECEFF1</color>
+</resources>
